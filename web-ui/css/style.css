@@ -1,0 +1,293 @@
+/* --- 1. FONTS --- */
+@font-face {
+    font-family: 'Michroma';
+    src: url('../fonts/Michroma-Regular.woff2') format('woff2');
+    font-weight: normal; font-style: normal; font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Regular.woff2') format('woff2');
+    font-weight: normal; font-style: normal; font-display: swap;
+}
+
+/* --- 2. BASE STYLES --- */
+body {
+    background-color: #000000;
+    color: #A9B7C0;
+    font-family: 'Montserrat', sans-serif;
+    padding: 20px;
+    margin: 0;
+}
+
+/* --- 3. HEADER LAYOUT & PODS --- */
+.header-container {
+    position: relative;
+    z-index: 100;
+    margin: 0 auto 13px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.header-content-left,
+.header-content-right {
+    display: flex;
+    align-items: center;
+    height: 52px;
+    background-color: rgba(120, 121, 124, 0.07);
+    border-radius: 50px;
+    box-shadow: 0 0 15px rgba(120, 121, 124, 0.4);
+    transition: all 0.3s ease-in-out;
+    box-sizing: border-box;
+    backdrop-filter: blur(5px);
+}
+
+.header-content-left:hover,
+.header-content-right:hover {
+    background-color: rgba(120, 121, 124, 0.15);
+    box-shadow: 0 0 25px rgba(120, 121, 124, 0.7);
+}
+
+.header-content-left { padding: 0 16px 0 6px; }
+.header-content-right { padding: 0 9px; gap: 8px; }
+
+/* --- 4. LEFT POD (Logo & Text) --- */
+.header-icon {
+    height: 42px !important;
+    width: auto;
+    margin-right: 8px;
+    flex-shrink: 0;
+    filter: contrast(1.1) brightness(1.1) drop-shadow(0 0 5px rgba(140, 141, 144, 0.3));
+    image-rendering: -webkit-optimize-contrast;
+    transition: all 0.3s ease-in-out;
+}
+
+.header-text {
+    font-family: 'Michroma', sans-serif;
+    font-size: 22px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    line-height: 1;
+    background: linear-gradient(90deg, #8c8d90 0%, #ffffff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 0 2px rgba(140, 141, 144, 0.9))
+            drop-shadow(0 0 6px rgba(140, 141, 144, 0.4));
+    transition: all 0.3s ease-in-out;
+}
+
+/* Left Pod Hover Sync */
+.header-content-left:hover .header-icon {
+    filter: contrast(1.2) brightness(1.3) drop-shadow(0 0 12px rgba(140, 141, 144, 0.8));
+    transform: scale(1.03);
+}
+
+.header-content-left:hover .header-text {
+    filter: drop-shadow(0 0 2px rgba(140, 141, 144, 1))
+            drop-shadow(0 0 12px rgba(140, 141, 144, 0.6));
+}
+
+/* --- 5. RIGHT POD (Tools & Menu) --- */
+.search-wrapper { position: relative; display: flex; align-items: center; }
+
+.search-input {
+    width: 32px;
+    height: 32px;
+    background-color: rgba(120, 121, 124, 0.05);
+    border: none;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    transition: width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.search-input:focus {
+    width: 180px;
+    color: #fff;
+    padding: 0 12px 0 32px;
+    border-radius: 50px;
+    background-color: rgba(120, 121, 124, 0.12);
+}
+
+.search-icon {
+    position: absolute;
+    left: 9px;
+    width: 14px;
+    height: 14px;
+    pointer-events: none;
+    stroke: #8c8d90;
+    fill: none;
+    transition: all 0.3s ease;
+}
+
+.header-btn, .cog-btn {
+    height: 32px;
+    background-color: rgba(120, 121, 124, 0.03);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+    color: #8c8d90;
+}
+
+.header-btn { font-family: 'Michroma', sans-serif; font-weight: bold; padding: 0 16px; font-size: 10px; text-transform: uppercase; }
+.cog-btn { width: 32px; padding: 0; }
+
+.header-btn:hover, .cog-btn:hover {
+    background-color: rgba(120, 121, 124, 0.2);
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+.cog-icon {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    fill: none;
+}
+
+/* Right Pod Hover Sync (Icons turn white) */
+.cog-btn:hover .cog-icon,
+.search-wrapper:hover .search-icon {
+    stroke: #fff !important;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+}
+
+/* --- 6. DROPDOWN MENU --- */
+.settings-wrapper { position: relative; display: flex; align-items: center; margin-left: 2px; }
+
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    background-color: #050f14;
+    border: 1px solid rgba(120, 121, 124, 0.5);
+    border-radius: 8px;
+    width: 190px;
+    display: none;
+    flex-direction: column;
+    z-index: 9999;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 1);
+}
+
+/* The Invisible Bridge to prevent flickering */
+.dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 0;
+    width: 100%;
+    height: 12px;
+    background: transparent;
+}
+
+.settings-wrapper:hover .dropdown-menu { display: flex; }
+
+.dropdown-menu a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #8c8d90;
+    padding: 12px 15px;
+    text-decoration: none;
+    font-size: 11px;
+    font-family: 'Michroma', sans-serif;
+    border-bottom: 1px solid rgba(120, 121, 124, 0.1);
+}
+
+.dropdown-menu a:hover { background: rgba(120, 121, 124, 0.15); color: #fff; }
+
+/* --- 7. LOG CONTENT & DOTS --- */
+p {
+    position: relative;
+    z-index: 1;
+    color: #A9B7C0;
+    font-size: 0.85rem;
+    line-height: 1.2;
+    word-break: break-all;
+    margin: 10px 0;
+}
+
+p b { color: #A9B7C0; font-weight: 600; }
+
+[class^="c-"] {
+    color: #8c8d90;
+    display: inline-block;
+    filter: brightness(85%);
+    text-shadow: 0 0 4px rgba(140, 141, 144, 0.4);
+    padding: 0;
+}
+
+.c-dot {
+    filter: brightness(90%);
+}
+
+
+
+.ip-link {
+    color: #8c8d90;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    filter: brightness(85%);
+    text-shadow: 0 0 6px rgba(140, 141, 144, 0.6);
+}
+
+.ip-link:hover {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(140, 141, 144, 0.8);
+}
+
+/* --- 8. GEOIP PANEL --- */
+.geoip-result {
+    margin: 10px 0 20px 0;
+    padding: 15px;
+    background-color: #0a0f12;
+    border-left: 2px solid #8c8d90;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    display: none;
+    line-height: 1.2;
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.geoip-title {
+    font-family: 'Michroma', sans-serif;
+    color: #ffffff;
+    font-size: 0.75rem;
+    display: block;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+.geoip-result b { color: #8c8d90; }
+
+/* --- Scroll logs without breaking page layout --- */
+
+/* Keep header visible while the log area scrolls */
+.header-container {
+    position: sticky;
+    top: 0;
+    background-color: #000000; /* prevents content showing through while sticky */
+}
+
+/* Make only the log list scroll */
+#log-container {
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
+    padding-right: 10px;
+    padding-bottom: 30px;
+}

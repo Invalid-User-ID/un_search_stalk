@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" type="image/png" href="images/UN.png">
+<title>Search Stalk</title>
+</head>
+
+<body>
+ <div class="header-container">
+<div class="header-content-left">
+<img src="images/UN.png" class="header-icon" alt="Logo">
+<span class="header-text">Search Stalk</span>
+</div>
+<div class="header-content-right">
+<div class="search-wrapper">
+<svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="11" cy="11" r="8"></circle>
+<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+</svg>
+<input type="text" class="search-input" aria-label="Search logs" placeholder="">
+</div>
+<div class="search-wrapper">
+<svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="11" cy="11" r="8"></circle>
+<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+</svg>
+<input type="text" class="search-input" aria-label="Search logs" placeholder="">
+</div>
+<div class="search-wrapper">
+<svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="11" cy="11" r="8"></circle>
+<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+</svg>
+<input type="text" class="search-input" aria-label="Search logs" placeholder="">
+</div>
+{{ BUTTON_LIST_CONTENT }}
+</div>
+</div>
+</div>
+</div>
+<div id="log-container">
+{{ HIT_LIST_CONTENT }}
+</div>
+<script src="js/search.js"></script>
+</body>
+</html>
